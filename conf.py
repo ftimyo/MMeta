@@ -30,7 +30,8 @@ ts = ['s','r','c']
 #track unique meta
 tu = ['t','i',]
 
-suffix = 'm4a'
+suffix = 'flac'
+prefix = 'CD'
 verbose = True
 
 levels = ['Chopin_ Complete Edition']
