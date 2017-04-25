@@ -1,3 +1,4 @@
+import re
 abbr =\
     {'a':'ALBUM',
      'b':'ALBUMARTIST',
@@ -45,3 +46,7 @@ def CheckConfig():
         if k not in abbr:
             return False
     return True
+
+def Translate(text):
+    m = re.match(r'(?P<idx>\d+)\.\s+(?P<title>.+)', text)
+    return m.group('title')

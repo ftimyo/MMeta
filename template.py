@@ -5,7 +5,7 @@ import taglib
 import csv
 
 class Track:
-    def __init__(self,filen,ntrack = None,totalntrack = None):
+    def __init__(self,filen = "",ntrack = None,totalntrack = None):
         self.m = dict()
         for p in conf.po:
             self.m[p] = ""
@@ -21,6 +21,9 @@ class Track:
         line.append(self.m['f'])
         return line
 
+    def GuessName(self):
+        self.m['i'] = conf.Translate(self.m['f'])
+        self.m['f'] = ''
 
 class Disc:
     def __init__(self,path,ndisc,totalndisc):
@@ -37,6 +40,7 @@ class Disc:
         total = len(ts)
         for i in range(0,total):
             self.ts.append(Track(ts[i],i+1,total))
+            self.ts[-1].GuessName()
 
     def ToLines(self):
         lines = list()
