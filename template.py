@@ -25,12 +25,18 @@ class Track:
         self.m['i'] = conf.Translate(self.m['f'])
         self.m['f'] = ''
 
+    def SetDefaultValue(self):
+        for p in conf.po:
+            if p in conf.dv:
+                self.m[p] = conf.dv[p]
+            else:
+                self.m[p] = p
+
 class Disc:
     def __init__(self,path,ndisc,totalndisc):
         self.ts = list()
         self.ts.append(Track(path))
-        for p in conf.po:
-            self.ts[0].m[p] = p
+        self.ts[0].SetDefaultValue()
         self.ts[0].m['k'] = '{0:d}/{1:d}'.format(ndisc,totalndisc)
         files = os.listdir(path)
         ts = list()
@@ -67,4 +73,4 @@ class Volumn:
                     writer.writerow(line)
 
 vol = Volumn()
-vol.DumpCSV("test.csv")
+vol.DumpCSV(os.path.basename(os.getcwd()+'.csv'))

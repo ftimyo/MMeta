@@ -14,6 +14,9 @@ abbr =\
      #'f' is not used for meta
      'f':'FILEPATH',
     }
+dv = \
+    {'c':'Johann Sebastian Bach',
+    }
 
 #single charactor null indicator
 null = 'x'
@@ -33,9 +36,6 @@ tu = ['t','i',]
 
 suffix = 'flac'
 prefix = 'CD'
-verbose = True
-
-levels = ['Chopin_ Complete Edition']
 
 def CheckConfig():
     if tu + ts + du + am != po:
